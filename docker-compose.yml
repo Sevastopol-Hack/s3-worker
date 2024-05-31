@@ -4,6 +4,7 @@ x-environment: &default-environment
   MINIO_ACCESS_KEY: tbdnQvks053pl55YRlm3
   MINIO_SECRET_KEY: IEBxWiWC5eRamJLlH5tfn9kLZPTWU7BReMM2Z2rH
   MINIO_ENDPOINT_URL: "http://api_s3:9000"
+  MINIO_PUBLIC_URL: "https://files.biwork.tech"
 
 services:
   s3_worker:
