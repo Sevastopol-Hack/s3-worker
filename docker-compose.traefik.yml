@@ -9,6 +9,7 @@ services:
       - "traefik.http.routers.biwork-api_s3.tls.certresolver=myresolver"
       - "traefik.http.services.biwork-api_s3.loadbalancer.server.port=9000"
       - "traefik.http.routers.minio-console.service=minio-console"
+      - "traefik.http.routers.minio-console.tls.certresolver=myresolver"
       - "traefik.http.routers.minio-console.rule=Host(`minio.biwork.tech`)"
       - "traefik.http.services.minio-console.loadbalancer.server.port=9001"
 
