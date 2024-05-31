@@ -1,6 +1,13 @@
 version: '3.8'
 
 services:
+  s3_worker:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.biwork-s3_worker.rule=Host(`files-api.biwork.tech`)"
+      - "traefik.http.routers.biwork-s3_worker.entrypoints=http,https"
+      - "traefik.http.routers.biwork-s3_worker.tls.certresolver=myresolver"
+      - "traefik.http.services.biwork-s3_worker.loadbalancer.server.port=8000"
   api_s3:
     labels:
       - "traefik.enable=true"
