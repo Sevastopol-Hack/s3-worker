@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query, UploadFile, Request, status
 from fastapi.responses import JSONResponse
 from worker import S3Worker, File
+from worker.config import MINIO_PUBLIC_URL
 from worker.exceptions.WorkerException import WorkerException
 import urllib.parse
 
@@ -50,5 +51,5 @@ async def remove_file(bucket: str, filename: str = Query()):
 @app.get("/file/{bucket}/{filename:path}", tags=["Files"])
 async def get_file_url(bucket: str, filename: str) -> str:
     url = Worker.get_file_url(bucket, filename)
-    url = url.replace("http://host.docker.internal:9000", "https://static.bitracking.ru")
+    url = url.replace("http://host.docker.internal:9000", MINIO_PUBLIC_URL)
     return url
